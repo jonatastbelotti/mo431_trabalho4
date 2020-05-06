@@ -24,7 +24,7 @@ class RandomSearch(Otimizador):
 
         # Executando otimização dos parâmetros
         self.iniciar_tempo()
-        randomSCV = RandomizedSearchCV(SVR(kernel='rbf'), parametros, random_state=0, n_iter=self.num_combinacoes, n_jobs=-1)
+        randomSCV = RandomizedSearchCV(SVR(kernel='rbf'), parametros, scoring="neg_mean_absolute_error", random_state=0, n_iter=self.num_combinacoes, n_jobs=-1)
         randomSCV.fit(self.X_treinamento, self.Y_treinamento)
         self.finalizar_tempo()
 
