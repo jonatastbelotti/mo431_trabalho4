@@ -1,7 +1,7 @@
+import numpy as np
+
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.svm import SVR
-
-from scipy.stats import uniform
 from otimizador import Otimizador
 from svm import SVM
 
@@ -17,9 +17,9 @@ class RandomSearch(Otimizador):
     def otimizar(self):
         # Definindo os parâmetros a serem utilizados
         parametros = {
-            'C': self.intervalo_C,
-            'gamma': self.intervalo_gamma,
-            'epsilon': self.intervalo_epsilon
+            'C': 2 ** np.random.uniform(low=-5.0, high=15.0+1, size=self.num_combinacoes),
+            'gamma': 2 ** np.random.uniform(low=-15.0, high=3.0+1, size=self.num_combinacoes),
+            'epsilon': np.random.uniform(low=0.05, high=1.0, size=self.num_combinacoes)
         }
 
         # Executando otimização dos parâmetros

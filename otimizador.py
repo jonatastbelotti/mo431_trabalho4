@@ -15,11 +15,6 @@ class Otimizador():
         self.X_teste = np.load(pasta + "/dados/Xteste5.npy")
         self.Y_teste = np.load(pasta + "/dados/yteste5.npy")
 
-        # Criando os intervalos das configurações
-        self.intervalo_C = 2 ** np.random.uniform(low=-5.0, high=15.0+1, size=125)
-        self.intervalo_gamma = 2 ** np.random.uniform(low=-15.0, high=3.0+1, size=125)
-        self.intervalo_epsilon = np.random.uniform(low=0.05, high=1.0, size=125)
-
         self.svm = None
 
         self.tempo_inicial = None
