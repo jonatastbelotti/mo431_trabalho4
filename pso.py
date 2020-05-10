@@ -44,7 +44,6 @@ class OtimizacaoPSO(Otimizador):
         return svm.mae_treinamento
 
 
-
 # CÓDIGO PRINCIPAL
 if __name__ == "__main__":
     p = OtimizacaoPSO(11, 11)
