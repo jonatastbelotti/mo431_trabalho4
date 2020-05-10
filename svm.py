@@ -36,7 +36,7 @@ class SVM():
         print("Conjunto de Treinamento: %d amostras (%.2f%%)" % (self.num_amostra_treinamento, ((100.0 / (self.num_amostra_treinamento + self.num_amostra_teste)) * self.num_amostra_treinamento)))
         print("MAE Treinamento: %f" % self.mae_treinamento)
         print("Conjunto de Teste: %d amostras (%.2f%%)" % (self.num_amostra_teste, ((100.0 / (self.num_amostra_treinamento + self.num_amostra_teste)) * self.num_amostra_teste)))
-        print("MAE Treinamento: %f" % self.mae_teste)
+        print("MAE Teste: %f" % self.mae_teste)
 
 
 # CÓDIGO PRINCIPAL

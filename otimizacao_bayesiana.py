@@ -21,12 +21,12 @@ class OtimizacaoBayesiana(Otimizador):
             'epsilon': hp.uniform('epsilon', 0.05, 1.0)
         }
 
-        # # Executando otimização dos parâmetros
+        # Executando otimização dos parâmetros
         self.iniciar_tempo()
         resp = fmin(self.func_obj_bayesiana, parametros, algo=tpe.suggest, max_evals=self.num_chamadas)
         self.finalizar_tempo()
 
-        # extraindo os melhores hiperparametros
+        # Extraindo os melhores hiperparametros
         C = 2.0 ** resp['C']
         gamma = 2.0 ** resp['gamma']
         epsilon = resp['epsilon']
