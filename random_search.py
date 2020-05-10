@@ -1,6 +1,6 @@
 import numpy as np
 
-from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV, ShuffleSplit
 from sklearn.svm import SVR
 from otimizador import Otimizador
 from svm import SVM
@@ -22,9 +22,11 @@ class RandomSearch(Otimizador):
             'epsilon': np.random.uniform(low=0.05, high=1.0, size=self.num_combinacoes)
         }
 
+        cv_ = ShuffleSplit(n_splits=1, test_size=0.1, train_size=0.9)
+
         # Executando otimização dos parâmetros
         self.iniciar_tempo()
-        randomSCV = RandomizedSearchCV(SVR(kernel='rbf'), parametros, scoring="neg_mean_absolute_error", random_state=0, n_iter=self.num_combinacoes, n_jobs=-1)
+        randomSCV = RandomizedSearchCV(SVR(kernel='rbf'), parametros, scoring="neg_mean_absolute_error", cv=cv_, n_iter=self.num_combinacoes, n_jobs=-1)
         randomSCV.fit(self.X_treinamento, self.Y_treinamento)
         self.finalizar_tempo()
 
