@@ -28,7 +28,7 @@ class GridSearch(Otimizador):
         grid.fit(self.X_treinamento, self.Y_treinamento)
         self.finalizar_tempo()
 
-        # Identify optimal hyperparameter values
+        # extraindo os melhores hiperparametros
         C = grid.best_params_['C']
         gamma = grid.best_params_['gamma']
         epsilon = grid.best_params_['epsilon']
