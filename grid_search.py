@@ -2,6 +2,8 @@ import numpy as np
 
 from sklearn.model_selection import GridSearchCV, ShuffleSplit
 from sklearn.svm import SVR
+from scipy.stats import uniform
+from scipy.stats import loguniform
 from otimizador import Otimizador
 from svm import SVM
 
@@ -17,9 +19,9 @@ class GridSearch(Otimizador):
     def otimizar(self):
         # Definindo os parâmetros a serem utilizados
         parametros = {
-            'C': 2 ** np.random.uniform(low=-5.0, high=15.0+1, size=self.tamanho_grid),
-            'gamma': 2 ** np.random.uniform(low=-15.0, high=3.0+1, size=self.tamanho_grid),
-            'epsilon': np.random.uniform(low=0.05, high=1.0, size=self.tamanho_grid)
+            'C': loguniform.rvs(2**-5, 2**15, size=self.tamanho_grid),
+            'gamma': loguniform.rvs(2**-15, 2**3, size=self.tamanho_grid),
+            'epsilon': uniform.rvs(0.0, 1, size=self.tamanho_grid)
         }
 
         cv_ = ShuffleSplit(n_splits=1, test_size=0.1, train_size=0.9)
